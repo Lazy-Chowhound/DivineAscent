@@ -19,7 +19,7 @@
 
 ​	反序列化：把字节序列恢复为对象的过程称为对象的反序列化。
 
-​	*serialVersionUI*：进行反序列化时，*JVM*会把传来的字节流中的*serialVersionUID*于本地相应实体类的*serialVersionUID*进行比较。如果相同说明是一致的，可以进行反序列化，否则会出现反序列化版本一致的异常，即是*InvalidCastException*。
+​	*serialVersionUI*：进行反序列化时，*JVM* 会把传来的字节流中的 *serialVersionUID* 于本地相应实体类的 *serialVersionUID* 进行比较。如果相同说明是一致的，可以进行反序列化，否则会出现反序列化版本一致的异常，即是 *InvalidCastException*。
 
 ## 实现序列化
 
@@ -47,17 +47,17 @@
 
 # *Java*异常
 
-​	所有的异常都是从*Throwable*继承而来的，是所有异常的共同祖先。
+​	所有的异常都是从 *Throwable* 继承而来的，是所有异常的共同祖先。
 
-​	*Throwable*有两个子类，*Error*和*Exception*。
+​	*Throwable* 有两个子类，*Error* 和 *Exception*。
 
-​	其中*Error*是错误，这些错误表示故障发生于虚拟机自身、或者发生在虚拟机试图执行应用时。这些错误是不可查的，因为它们在应用程序的控制和处理能力之外，如*StackOverFlowError*、*OutOfMemoryError*。
+​	其中 *Error* 是错误，这些错误表示故障发生于虚拟机自身、或者发生在虚拟机试图执行应用时。这些错误是不可查的，因为它们在应用程序的控制和处理能力之外，如*StackOverFlowError*、*OutOfMemoryError*。
 
-​	*Exception*，是另外一个非常重要的异常子类。它规定的异常是程序本身可以处理的异常。 *Exception*分为*IOException*和*RunTimeException*。
+​	*Exception*，是另外一个非常重要的异常子类。它规定的异常是程序本身可以处理的异常。 *Exception* 分为 *IOException* 和*RunTimeException*。
 
-1. 运行时异常(不受检异常)：*RuntimeException*类极其子类表示*JVM*在运行期间可能出现的错误。比如说试图使用空值对象的引用（*NullPointerException*）、数组下标越界（*ArrayIndexOutBoundException*）。此类异常属于不可查异常，一般是由程序逻辑错误引起的，在程序中可以选择捕获处理，也可以不处理。
+1. 运行时异常(不受检异常)：*RuntimeException* 类极其子类表示*JVM*在运行期间可能出现的错误。比如说试图使用空值对象的引用（*NullPointerException*）、数组下标越界（*ArrayIndexOutBoundException*）。此类异常属于不可查异常，一般是由程序逻辑错误引起的，在程序中可以选择捕获处理，也可以不处理。
 
-2. 编译异常(受检异常)：*Exception*中除*RuntimeException*极其子类之外的异常，如*IOException*。如果程序中出现此类异常，必须对该异常进行处理，否则编译不通过。在程序中，通常不会自定义该类异常，而是直接使用系统提供的异常类。
+2. 编译异常(受检异常)：*Exception* 中除 *RuntimeException* 极其子类之外的异常，如 *IOException*。如果程序中出现此类异常，必须对该异常进行处理，否则编译不通过。在程序中，通常不会自定义该类异常，而是直接使用系统提供的异常类。
 
 # 抽象类和接口
 
@@ -70,7 +70,7 @@
 
 ## 接口
 
-> + 可以包含变量，但都是*final static*类型
+> + 可以包含变量，但都是 *final static* 类型
 > + 接口里的方法都是抽象方法
 
 # *Equals*和*HashCode*
@@ -113,9 +113,9 @@
 
    以这种方式赋值时，*JVM*会先从字符串实例池中查询是否存在"*test*"这个对象，
 
-   若不存在则会在实例池中创建"*test*"对象，同时在堆中创建"*test*"这个对象，然后将**堆中的这个对象的地址**返回赋给引用*str*。
+   若不存在则会在实例池中创建"*test*"对象，同时在堆中创建"*test*"这个对象，然后将**堆中的这个对象的地址**返回赋给引用 *str*。
 
-   若实例池存在则直接在堆中创建"*test*"这个对象，然后将**堆中的这个对象**的地址返回赋给引用*str*。
+   若实例池存在"*test*"对象，则直接在堆中创建"*test*"这个对象，然后将堆中的这个对象的地址返回赋给引用 *str*。
 
 # *String*、*StringBuilder*和*StringBuffer*
 
@@ -244,17 +244,17 @@
 
 ## 线程不*start*，直接*run*可以吗
 
-​    可以，但是直接使用*run*的话起不到多线程的效果，就相当于平时直接调用类中的某个方法；*start*()才是真正启动了一个线程，这时线程就进入就绪状态，等待*CPU*资源，而且不需要等待*run*方法执行完，可以直接去执行下一句代码，这才是真正实现了多线程。
+​    可以，但是直接使用 *run* 的话起不到多线程的效果，就相当于平时直接调用类中的某个方法；*start*() 才是真正启动了一个线程，这时线程就进入就绪状态，等待 *CPU* 资源，而且不需要等待 *run* 方法执行完，可以直接去执行下一句代码，这才是真正实现了多线程。
 
 ## *CountDownLatch*
 
-1. 创建一个*CountDownLatch*，并赋予一个数值*state*，这个值表示需要计数的次数，每次*countDown*算一次。
-2. 在主线程调用*await*方法，表示state为0之前都不会继续运行。*await*方法的内部实现依赖于内部的*AQS*，调用*await*方法的时候会尝试去获取资源，成功条件是*state*=0，也就是说除非*countDown*了*state*次之后，才能成功，失败的话当前线程进行休眠。
-3. 在子线程调用*countDown*方法，每次调用都会使内部的*state*-1，*state*为0的时候资源释放，*await*方法不再阻塞(即使再次调用也是)。
+1. 创建一个*CountDownLatch*，并赋予一个数值 *state*，这个值表示需要计数的次数，每次 *countDown* 算一次。
+2. 在主线程调用 *await* 方法，表示 *state* 为0之前都不会继续运行。*await* 方法的内部实现依赖于内部的 *AQS*，调用 *await* 方法的时候会尝试去获取资源，成功条件是 *state*=0，也就是说除非 *countDown* 了 *state* 次之后，才能成功，失败的话当前线程进行休眠。
+3. 在子线程调用 *countDown* 方法，每次调用都会使内部的*state*-1，*state*为0的时候资源释放，*await*方法不再阻塞(即使再次调用也是)。
 
 ## *CyclicBarrier*
 
-1. 创建*CyclicBarrier*，并赋值*parties*，每个子线程完成任务后调用await方法会将该值-1并等待其他线程，等所有子线程均完成任务之后，该值为0，然后重置该值为一开始的值，然后子线程又开始执行任务，重复以上过程，一直到*run*方法里执行结束。
+1. 创建 *CyclicBarrier*，并赋值 *parties*，每个子线程完成任务后调用 *await* 方法会将该值-1并等待其他线程，等所有子线程均完成任务之后，该值为0，然后重置该值为一开始的值，然后子线程又开始执行任务，重复以上过程，一直到 *run* 方法里执行结束。
 
 # 线程池
 
